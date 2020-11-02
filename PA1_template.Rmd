@@ -1,9 +1,9 @@
 ---
-title: "PA1_template"
-author: "Rilomilo"
-date: "25 de octubre de 2020"
+title: "Reproducible Research: Peer Assessment 1"
+author: "RiloMilo"
+date: "`r format(Sys.time(), '%B %d, %Y, %R')`"
 output: 
-  html_document: 
+  html_document:
     keep_md: true
 ---
 
@@ -28,12 +28,14 @@ The activity data is shown above, from 2012-10-01 to 2012-11-30 with steps in ea
 library(dplyr)
 sum.step <- data %>% group_by(date) %>% summarise(total.step=sum(steps,na.rm = T))
 sum.step
+
 ```
 The total number of steps taken per day is shown above. For days the observations of which are all missing, their total number of steps is counted as 0.
 
 2. Make a histogram of the total number of steps taken each day
 ```{r}
 hist(sum.step$total.step, main = "Histogram of total number of steps taken per day", xlab = "Total number of steps")
+
 ```
 
 The distribution of total number of steps per day from 2012-10-01 to 2012-11-30 is shown in the histogram above. We can see that about half of the days the person has a total daily steps between 10,000 and 15,000. He does not often makes total daily steps more than 20,000.
@@ -60,6 +62,7 @@ The average daily activity pattern is shown above. In average, the person basica
 
 ```{r}
 step.interval[step.interval$mean.step==max(step.interval$mean.step),]
+
 ```
 The 835th interval, on on average across all the days, contains the maximum number of steps, which is 206.
 
@@ -148,4 +151,6 @@ step.interval.weekday <- new.data %>% group_by(interval,weekday) %>% summarise(m
 library(lattice)
 xyplot(mean.step~interval|weekday, data=step.interval.weekday, type="l",layout=c(1,2))
 ```
+
+As shown above, there are some differences in activity patterns between weekdays and weekends. In average, the person starts daily activities earlier on weekdays, and the peak in activities between interval 750 and 900 is higher in weekdays. However, the person remains more active when he/ she is awake from interval 1000 to 2000 on weekends.
 
