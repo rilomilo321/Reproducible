@@ -434,7 +434,7 @@ sum.step</code></pre>
 <div id="what-is-the-average-daily-activity-pattern" class="section level2">
 <h2>What is the average daily activity pattern?</h2>
 <ol style="list-style-type: decimal">
-<li>Make a time series plot (i.e. type = “l”) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)</li>
+<li>Make a time series plot (i.e. type = “l”) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)</li>
 </ol>
 <pre class="r"><code># compute average number of steps per time interval
 step.interval &lt;- data %&gt;% group_by(interval) %&gt;% summarise(mean.step= mean(steps,na.rm = T))
@@ -455,7 +455,7 @@ plot(step.interval$interval, step.interval$mean.step, type = &quot;l&quot;, main
 <div id="imputing-missing-values" class="section level2">
 <h2>Imputing missing values</h2>
 <ol style="list-style-type: decimal">
-<li>Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)</li>
+<li>Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)</li>
 </ol>
 <pre class="r"><code>sum(is.na(data$steps))</code></pre>
 <pre><code>## [1] 2304</code></pre>
@@ -542,7 +542,7 @@ str(new.data)</code></pre>
 ##  $ interval: int  0 5 10 15 20 25 30 35 40 45 ...
 ##  $ weekday : Factor w/ 2 levels &quot;weekday&quot;,&quot;weekend&quot;: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Make a panel plot containing a time series plot (i.e. type = “l”) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis).</li>
+<li>Make a panel plot containing a time series plot (i.e. type = “l”) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis).</li>
 </ol>
 <pre class="r"><code># compute average steps for each interval separated by weekday and weekend
 step.interval.weekday &lt;- new.data %&gt;% group_by(interval,weekday) %&gt;% summarise(mean.step= mean(steps))
